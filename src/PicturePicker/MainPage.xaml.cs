@@ -1,40 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.Storage.Pickers;
-using Windows.UI.Xaml;
+﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace PicturePicker
 {
 	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// A page that is loaded in the root frame of the app's main window.
 	/// </summary>
 	public sealed partial class MainPage : Page
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MainPage"/> class.
+		/// </summary>
 		public MainPage()
 		{
 			this.InitializeComponent();
 			ViewModel = new MainViewModel();
 		}
 
+		/// <summary>
+		/// Gets the view-model.
+		/// </summary>
 		public MainViewModel ViewModel
 		{
 			get;
 		}
 
+		/// <summary>
+		/// Handler for the Click event of the button for selecting a file.
+		/// </summary>
+		/// <param name="sender">The event source.</param>
+		/// <param name="e">The event arguments.</param>
 		private async void Button_Click(object sender, RoutedEventArgs e)
 		{
 			await ViewModel.SelectFileAsync();
