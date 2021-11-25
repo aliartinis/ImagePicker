@@ -27,27 +27,19 @@ namespace PicturePicker
 		public MainPage()
 		{
 			this.InitializeComponent();
+			ViewModel = new MainViewModel();
+		}
+
+		public MainViewModel ViewModel
+		{
+			get;
 		}
 
 		private async void Button_Click(object sender, RoutedEventArgs e)
 		{
 			// Clear previous returned file name, if it exists, between iterations of this scenario
-			NameValueTextBlock.Text = "";
+			NameValueTextBlock.Text = await ViewModel.SelectFileAsync();
 			TypeValueTextBlock.Text = "";
-
-			FileOpenPicker openPicker = new FileOpenPicker();
-			openPicker.ViewMode = PickerViewMode.Thumbnail;
-			openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-			openPicker.FileTypeFilter.Add(".jpg");
-			openPicker.FileTypeFilter.Add(".jpeg");
-			openPicker.FileTypeFilter.Add(".png");
-			StorageFile file = await openPicker.PickSingleFileAsync();
-			
-			if (file != null)
-			{
-				NameValueTextBlock.Text = file.DisplayName;
-				TypeValueTextBlock.Text = file.FileType;
-			}
 		}
 	}
 }
