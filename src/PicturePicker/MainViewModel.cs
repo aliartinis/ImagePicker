@@ -15,6 +15,16 @@ namespace PicturePicker
 		private string fileName;
 		private string fileType;
 
+		public MainViewModel()
+		{
+			PictureSelectorService = new PictureSelectorService();
+		}
+
+		public PictureSelectorService PictureSelectorService
+		{
+			get;
+		}
+
 		public string FileName
 		{
 			get => fileName;
@@ -29,18 +39,12 @@ namespace PicturePicker
 
 		public async Task SelectFileAsync()
 		{
-			FileOpenPicker openPicker = new FileOpenPicker();
-			openPicker.ViewMode = PickerViewMode.Thumbnail;
-			openPicker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-			openPicker.FileTypeFilter.Add(".jpg");
-			openPicker.FileTypeFilter.Add(".jpeg");
-			openPicker.FileTypeFilter.Add(".png");
-			StorageFile file = await openPicker.PickSingleFileAsync();
+			PictureModel model = await PictureSelectorService.SelectFileAsync();
 
-			if (file != null)
+			if (model != null)
 			{
-				FileName = file.DisplayName;
-				FileType = file.FileType;
+				FileName = model.Name;
+				FileType = model.Type;
 			}
 			else
 			{
