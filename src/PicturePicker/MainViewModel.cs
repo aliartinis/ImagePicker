@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -9,20 +10,21 @@ using Windows.Storage.Pickers;
 
 namespace PicturePicker
 {
-	public class MainViewModel : INotifyPropertyChanged
+	public class MainViewModel : ObservableObject
 	{
-		public event PropertyChangedEventHandler PropertyChanged;
+		private string fileName;
+		private string fileType;
 
 		public string FileName
 		{
-			get;
-			set;
+			get => fileName;
+			set => SetProperty(ref fileName, value);
 		}
 
 		public string FileType
 		{
-			get;
-			set;
+			get => fileType;
+			set => SetProperty(ref fileType, value);
 		}
 
 		public async Task SelectFileAsync()
@@ -45,9 +47,6 @@ namespace PicturePicker
 				FileName = "";
 				FileType = "";
 			}
-
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FileName"));
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FileType"));
 		}
 	}
 }
