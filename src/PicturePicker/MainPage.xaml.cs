@@ -24,15 +24,5 @@ namespace PicturePicker
 		{
 			get;
 		}
-
-		/// <summary>
-		/// Handler for the Click event of the button for selecting a file.
-		/// </summary>
-		/// <param name="sender">The event source.</param>
-		/// <param name="e">The event arguments.</param>
-		private async void Button_Click(object sender, RoutedEventArgs e)
-		{
-			await ViewModel.SelectFileAsync();
-		}
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PicturePicker
 {
@@ -40,6 +42,16 @@ namespace PicturePicker
 		}
 		#endregion
 
+		#region Commands
+		/// <summary>
+		/// Gets the command for selecting an image.
+		/// </summary>
+		public ICommand SelectImageFileCommand
+		{
+			get => new AsyncRelayCommand(SelectFileAsync);
+		}
+		#endregion
+
 		#region Properties
 		/// <summary>
 		/// Gets or sets the image file name.
@@ -65,7 +77,7 @@ namespace PicturePicker
 		/// Retrieve details of the user selected image file.
 		/// </summary>
 		/// <returns>An asynchronous operation which, upon completion, returns nothing.</returns>
-		public async Task SelectFileAsync()
+		private async Task SelectFileAsync()
 		{
 			// Get the image data from the service.
 			ImageFileModel model = await ImageFileService.SelectFileAsync();
