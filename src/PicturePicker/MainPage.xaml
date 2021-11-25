@@ -43,7 +43,8 @@
 				<TextBlock
 					x:Name="NameValueTextBlock"
 					HorizontalAlignment="Center"
-					FontSize="30" />
+					FontSize="30"
+					Text="{x:Bind ViewModel.FileName, Mode=OneWay}" />
 			</StackPanel>
 
 			<StackPanel Orientation="Horizontal">
@@ -57,7 +58,8 @@
 				<TextBlock
 					x:Name="TypeValueTextBlock"
 					HorizontalAlignment="Center"
-					FontSize="30" />
+					FontSize="30"
+					Text="{x:Bind ViewModel.FileType, Mode=OneWay}" />
 			</StackPanel>
 		</StackPanel>
 	</Grid>

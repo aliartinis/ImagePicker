@@ -37,9 +37,7 @@ namespace PicturePicker
 
 		private async void Button_Click(object sender, RoutedEventArgs e)
 		{
-			// Clear previous returned file name, if it exists, between iterations of this scenario
-			NameValueTextBlock.Text = await ViewModel.SelectFileAsync();
-			TypeValueTextBlock.Text = "";
+			await ViewModel.SelectFileAsync();
 		}
 	}
 }

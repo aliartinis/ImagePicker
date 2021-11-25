@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,23 @@ using Windows.Storage.Pickers;
 
 namespace PicturePicker
 {
-	public class MainViewModel
+	public class MainViewModel : INotifyPropertyChanged
 	{
-		public async Task<string> SelectFileAsync()
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public string FileName
+		{
+			get;
+			set;
+		}
+
+		public string FileType
+		{
+			get;
+			set;
+		}
+
+		public async Task SelectFileAsync()
 		{
 			FileOpenPicker openPicker = new FileOpenPicker();
 			openPicker.ViewMode = PickerViewMode.Thumbnail;
@@ -22,12 +37,17 @@ namespace PicturePicker
 
 			if (file != null)
 			{
-				return file.DisplayName;
+				FileName = file.DisplayName;
+				FileType = file.FileType;
 			}
 			else
 			{
-				return "";
+				FileName = "";
+				FileType = "";
 			}
+
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FileName"));
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FileType"));
 		}
 	}
 }
