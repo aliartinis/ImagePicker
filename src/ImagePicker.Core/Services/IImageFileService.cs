@@ -1,6 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using ImagePicker.Core.Models;
+using System.Threading.Tasks;
 
-namespace PicturePicker
+namespace ImagePicker.Core.Services
 {
 	/// <summary>
 	/// Interface for a type dealing with image files.

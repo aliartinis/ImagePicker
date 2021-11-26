@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ImagePicker.Core.Services;
+using ImagePicker.Core.ViewModels;
+using ImagePicker.Services;
+using ImagePicker.Views;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,7 +21,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace PicturePicker
+namespace ImagePicker
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

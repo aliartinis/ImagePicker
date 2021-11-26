@@ -1,7 +1,8 @@
-﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
+﻿using ImagePicker.Core.ViewModels;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 
-namespace PicturePicker
+namespace ImagePicker.Views
 {
 	/// <summary>
 	/// A page that is loaded in the root frame of the app's main window.

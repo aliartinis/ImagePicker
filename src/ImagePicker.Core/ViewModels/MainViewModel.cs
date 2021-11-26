@@ -1,9 +1,11 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using ImagePicker.Core.Models;
+using ImagePicker.Core.Services;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace PicturePicker
+namespace ImagePicker.Core.ViewModels
 {
 	/// <summary>
 	/// A view-model for the app's main page.

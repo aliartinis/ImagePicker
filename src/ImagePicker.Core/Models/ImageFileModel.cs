@@ -1,4 +1,4 @@
-﻿namespace PicturePicker
+﻿namespace ImagePicker.Core.Models
 {
 	/// <summary>
 	/// Represents data about an image file.

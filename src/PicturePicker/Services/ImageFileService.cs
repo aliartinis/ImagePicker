@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ImagePicker.Core.Models;
+using ImagePicker.Core.Services;
+using System;
 using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 
-namespace PicturePicker
+namespace ImagePicker.Services
 {
 	/// <summary>
 	/// A service for selecting image files and obtaining their details.
