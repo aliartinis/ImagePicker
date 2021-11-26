@@ -26,9 +26,9 @@ namespace PicturePicker
 		/// <summary>
 		/// Initializes a new instance of the <see cref="MainViewModel"/> class.
 		/// </summary>
-		public MainViewModel()
+		public MainViewModel(IImageFileService imageFileService)
 		{
-			ImageFileService = new ImageFileService();
+			ImageFileService = imageFileService;
 		}
 		#endregion
 

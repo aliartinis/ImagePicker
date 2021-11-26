@@ -14,7 +14,7 @@ namespace PicturePicker
 		public MainPage()
 		{
 			this.InitializeComponent();
-			ViewModel = new MainViewModel();
+			ViewModel = new MainViewModel(new ImageFileService());
 		}
 
 		/// <summary>
