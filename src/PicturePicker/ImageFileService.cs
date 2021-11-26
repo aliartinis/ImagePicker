@@ -8,12 +8,9 @@ namespace PicturePicker
 	/// <summary>
 	/// A service for selecting image files and obtaining their details.
 	/// </summary>
-	public class ImageFileService
+	public class ImageFileService : IImageFileService
 	{
-		/// <summary>
-		/// Prompts the user to choose an image file and returns its details after selection.
-		/// </summary>
-		/// <returns>An asynchronous opertation which, upon completion, returns details of the user selected image.</returns>
+		/// <inheritdoc/>
 		public async Task<ImageFileModel> SelectFileAsync()
 		{
 			// Prepare the UI control that lets the user choose a file.

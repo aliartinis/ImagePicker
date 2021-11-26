@@ -36,7 +36,7 @@ namespace PicturePicker
 		/// <summary>
 		/// Gets the image file service.
 		/// </summary>
-		public ImageFileService ImageFileService
+		public IImageFileService ImageFileService
 		{
 			get;
 		}
