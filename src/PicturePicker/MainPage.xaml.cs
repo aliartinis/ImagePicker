@@ -1,4 +1,4 @@
-﻿using Windows.UI.Xaml;
+﻿using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 
 namespace PicturePicker
@@ -14,7 +14,9 @@ namespace PicturePicker
 		public MainPage()
 		{
 			this.InitializeComponent();
-			ViewModel = new MainViewModel(new ImageFileService());
+
+			// Provides a new instance of the view-model while taking care of its dependencies.
+			ViewModel = Ioc.Default.GetRequiredService<MainViewModel>();
 		}
 
 		/// <summary>

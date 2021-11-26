@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,6 +35,22 @@ namespace PicturePicker
         }
 
         /// <summary>
+		/// Initializes the application's default IoC container.
+		/// </summary>
+		private void ConfigureIoC()
+        {
+            ServiceCollection services = new ServiceCollection();
+
+            // Register services
+            services.AddSingleton<IImageFileService, ImageFileService>();
+
+            // Register view-models
+            services.AddTransient<MainViewModel>();
+
+            Ioc.Default.ConfigureServices(services.BuildServiceProvider());
+        }
+
+        /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
@@ -57,6 +75,8 @@ namespace PicturePicker
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
+
+                ConfigureIoC();
             }
 
             if (e.PrelaunchActivated == false)
