@@ -1,4 +1,5 @@
-﻿using ImagePicker.Core.Services;
+﻿using ImagePicker.Core.Models;
+using ImagePicker.Core.Services;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System.Threading.Tasks;
@@ -9,8 +10,15 @@ namespace ImagePicker.Core.ViewModels
 	/// <summary>
 	/// A view-model for a view enabling the selection of an image.
 	/// </summary>
-	public class ImageSelectionViewModel : ObservableObject
+	public class ImageSelectionViewModel : ObservableRecipient
 	{
+		#region Backing Fields
+		/// <summary>
+		/// Backing field for <see cref="SelectedImage"/>.
+		/// </summary>
+		private ImageFileModel selectedImage;
+		#endregion
+
 		#region Constructors
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ImageSelectionViewModel"/> class.
@@ -41,6 +49,17 @@ namespace ImagePicker.Core.ViewModels
 		}
 		#endregion
 
+		#region Properties
+		/// <summary>
+		/// Gets or sets the image file model.
+		/// </summary>
+		public ImageFileModel SelectedImage
+		{
+			get => selectedImage;
+			set => SetProperty(ref selectedImage, value, true);
+		}
+		#endregion
+		
 		#region Methods
 		/// <summary>
 		/// Retrieve details of the user selected image file.
@@ -49,7 +68,7 @@ namespace ImagePicker.Core.ViewModels
 		private async Task SelectFileAsync()
 		{
 			// Get the image data from the service.
-			AppState.Instance.ImageFileModel = await ImageFileService.SelectFileAsync();
+			SelectedImage = await ImageFileService.SelectFileAsync();
 		}
 		#endregion
 	}

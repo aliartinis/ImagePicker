@@ -1,11 +1,14 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+﻿using ImagePicker.Core.Models;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Messaging;
+using Microsoft.Toolkit.Mvvm.Messaging.Messages;
 
 namespace ImagePicker.Core.ViewModels
 {
 	/// <summary>
 	/// A view-model for a view displaying details of an image.
 	/// </summary>
-	public class ImageDetailsViewModel : ObservableObject
+	public class ImageDetailsViewModel : ObservableRecipient, IRecipient<PropertyChangedMessage<ImageFileModel>>
 	{
 		#region Backing fields
 		/// <summary>
@@ -17,16 +20,6 @@ namespace ImagePicker.Core.ViewModels
 		/// Backing field for <see cref="FileType"/>.
 		/// </summary>
 		private string fileType;
-		#endregion
-
-		#region Constructors
-		/// <summary>
-		/// Initializes a new instance of the <see cref="ImageDetailsViewModel"/> class.
-		/// </summary>
-		public ImageDetailsViewModel()
-		{
-			AppState.Instance.PropertyChanged += OnAppStatePropertyChanged;
-		}
 		#endregion
 
 		#region Properties
@@ -50,16 +43,13 @@ namespace ImagePicker.Core.ViewModels
 		#endregion
 
 		#region Methods
-		/// <summary>
-		/// Invoked when the value a property of <see cref="AppState"/> has changed.
-		/// </summary>
-		/// <param name="sender">The event source.</param>
-		/// <param name="e">The event arguments.</param>
-		private void OnAppStatePropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		/// <inheritdoc/>
+		public void Receive(PropertyChangedMessage<ImageFileModel> message)
 		{
-			if (e.PropertyName == nameof(AppState.Instance.ImageFileModel))
+			if (message.Sender.GetType() == typeof(ImageSelectionViewModel) &&
+				message.PropertyName == nameof(ImageSelectionViewModel.SelectedImage))
 			{
-				var model = AppState.Instance.ImageFileModel;
+				var model = message.NewValue;
 				if (model != null)
 				{
 					FileName = model.Name;
