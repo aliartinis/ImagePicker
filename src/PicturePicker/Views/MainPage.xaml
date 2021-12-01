@@ -24,9 +24,9 @@
 			Text="Image Picker" />
 
 		<!--  Section to select a file  -->
-		<views:ImageSelectionPage Grid.Row="1" ViewModel="{x:Bind ViewModel}" />
+		<views:ImageSelectionPage Grid.Row="1" />
 
 		<!--  Section to display file info  -->
-		<views:ImageDetailsPage Grid.Row="2" ViewModel="{x:Bind ViewModel}" />
+		<views:ImageDetailsPage Grid.Row="2" />
 	</Grid>
 </Page>

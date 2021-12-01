@@ -50,6 +50,8 @@ namespace ImagePicker
 
             // Register view-models
             services.AddTransient<MainViewModel>();
+            services.AddTransient<ImageSelectionViewModel>();
+            services.AddTransient<ImageDetailsViewModel>();
 
             Ioc.Default.ConfigureServices(services.BuildServiceProvider());
         }

@@ -1,4 +1,5 @@
 ﻿using ImagePicker.Core.ViewModels;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -16,15 +17,15 @@ namespace PicturePicker.Views
 		public ImageDetailsPage()
 		{
 			this.InitializeComponent();
+			ViewModel = Ioc.Default.GetRequiredService<ImageDetailsViewModel>();
 		}
 
 		/// <summary>
-		/// Gets or sets the view-model.
+		/// Gets the view-model.
 		/// </summary>
-		public MainViewModel ViewModel
+		public ImageDetailsViewModel ViewModel
 		{
 			get; 
-			set;
 		}
 	}
 }

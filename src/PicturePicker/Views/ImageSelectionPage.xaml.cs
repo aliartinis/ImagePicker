@@ -1,4 +1,5 @@
 ﻿using ImagePicker.Core.ViewModels;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Windows.UI.Xaml.Controls;
 
 namespace PicturePicker.Views
@@ -14,15 +15,15 @@ namespace PicturePicker.Views
 		public ImageSelectionPage()
 		{
 			this.InitializeComponent();
+			ViewModel = Ioc.Default.GetRequiredService<ImageSelectionViewModel>();
 		}
 
 		/// <summary>
-		/// Gets or sets the view-model.
+		/// Gets the view-model.
 		/// </summary>
-		public MainViewModel ViewModel
+		public ImageSelectionViewModel ViewModel
 		{
 			get;
-			set;
 		}
 	}
 }
